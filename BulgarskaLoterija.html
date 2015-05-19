@@ -9,21 +9,48 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 		<script type="text/javascript" src="BulgarskaLoterija.js"></script>
 		<style>
+			.well { float: left; }
+			.well .drawing_status { margin-bottom: 50px; }
+			.well .drawing_status label { font-weight: bold; }
+			.well div div.lottery_ball { position: relative; width: 100px; height: 100px; margin: 0 auto; line-height: 100px; background: radial-gradient(circle at 30px 30px, #fff, #000); border-radius: 50px; }
+			.well div div.lottery_ball label { text-align: center; vertical-align: middle; width: 100%; font-size: 44px; }
+			.well div div.drawing_time { margin-top: 20px; }
+			.well div div.drawing_time label { display: block; text-align: center; }
+			.well div div.drawing_time label:last-child { font-size: 16px; }
+			button { margin: 40px 10px 0 0; !important; float: right; } 
 		</style>
 	</head>
 	<body ng-app="BulgarianLottery">
 	 	<div class="container" ng-controller="PromiseController" style="margin-left: 10px;">
 	 		<div class="row">
-	 			<div class="col-xs-12">
-	 				<h1>Bulgarska loterija</h1>
-	 				<div class="well">
-	 					<p>Status žrebanja: {{ status }}</p>
-	 					<p>Prva številka: {{ drawnNumber1 }}  Čas žrebanja: {{ drawingTime1 }}</p>
-	 					<p>Druga številka: {{ drawnNumber2 }}  Čas žrebanja: {{ drawingTime2 }}</p>
-	 					<p>Tretja številka: {{ drawnNumber3 }}  Čas žrebanja: {{ drawingTime3 }}</p>
-	 					<button class="btn btn-primary" ng-click="startDrawingNumbers()">Izžrebaj številke!</button>
-	 				</div>
-	 			</div>
+ 				<h1>Bulgarian lottery</h1>
+ 				<div class="well">
+ 					<div class="drawing_status">Drawing status: <label>{{ status }}</label> 
+  						<img ng-src="ajax-loader.gif" ng-show="loading" />
+ 					</div>
+ 					<div class="col-md-4">
+ 						<div class="lottery_ball"><label>{{ drawnNumber1 }}</label></div> 
+ 						<div class="drawing_time">
+ 							<label>Drawing time:</label>
+ 							<label>{{ drawingTime1 }}</label>
+ 						</div>
+ 					</div> 
+ 					<div class="col-md-4">
+ 						<div class="lottery_ball"><label>{{ drawnNumber2 }} </label></div>
+ 						<div class="drawing_time">
+ 							<label>Drawing time:</label>
+ 							<label>{{ drawingTime2 }}</label>
+ 						</div>
+ 					</div>
+ 					<div class="col-md-4">
+ 						<div class="lottery_ball"><label>{{ drawnNumber3 }}</label></div>
+ 						<div class="drawing_time">
+ 							<label>Drawing time:</label>
+ 							<label>{{ drawingTime3 }}</label>
+ 						</div>
+ 					</div>
+ 					<button class="btn btn-primary" ng-click="startDrawingNumbers()">Izžrebaj številke!</button>
+ 				</div>
 	 		</div>
 	 	</div>
 	</body>
