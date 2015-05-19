@@ -4,8 +4,6 @@ angular.module('BulgarianLottery').controller('PromiseController', function($sco
 	var alreadyDrawnNumbers = [];
 
 	$scope.startDrawingNumbers = function() {
-		$scope.status = "Drawing first number ...";
-		$scope.loading = true;
 		// initialize
 		$scope.drawnNumber1 = '';
 		$scope.drawnNumber2 = '';
@@ -13,18 +11,21 @@ angular.module('BulgarianLottery').controller('PromiseController', function($sco
 		$scope.drawingTime1 = '';
 		$scope.drawingTime2 = ''; 
 		$scope.drawingTime3 = '';
+		
+		$scope.status = "Drawing the first number ...";
+		$scope.loading = true;
 
 		// first drawing
 		DrawANumber().then(function(success) {
 			$scope.drawnNumber1 = success.number;
 			$scope.drawingTime1 = (success.drawingTime/1000).toFixed(2)+" s";
-			$scope.status = "Drawing second number ...";
+			$scope.status = "Drawing the second number ...";
 
 			// second drawing
 			DrawANumber().then(function(success) {
 				$scope.drawnNumber2 = success.number;
 				$scope.drawingTime2 = (success.drawingTime/1000).toFixed(2)+" s";
-				$scope.status = "Drawing third number ...";
+				$scope.status = "Drawing the third number ...";
 
 				// third drawing
 				DrawANumber().then(function(success) {
